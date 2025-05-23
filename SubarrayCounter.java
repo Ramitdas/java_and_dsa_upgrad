@@ -1,7 +1,7 @@
 public class SubarrayCounter {
     public static int countSubarrays(int[] arr, int k, int threshold) {
         int count = 0;
-        int windowSum = 0;
+        double windowSum = 0.0;
 
         // Initial sum for first window
         for (int i = 0; i < k; i++) {
@@ -9,14 +9,14 @@ public class SubarrayCounter {
         }
 
         // Check first window
-        if ((double) windowSum / k >= threshold) {
+        if (windowSum / k >= threshold) {
             count++;
         }
 
         // Sliding window approach
         for (int i = k; i < arr.length; i++) {
             windowSum += arr[i] - arr[i - k];
-            if ((double) windowSum / k >= threshold) {
+            if (windowSum / k >= threshold) {
                 count++;
             }
         }
