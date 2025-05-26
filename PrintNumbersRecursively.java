@@ -1,13 +1,13 @@
 public class PrintNumbersRecursively {
     public static void main(String[] args) {
-        printNumbers(1, 1000);
+        increment(1); // Start from 1
     }
 
-    public static void printNumbers(int current, int limit) {
-        if (current > limit) {
+    public static void increment(int k) {
+        if (k > 1000) { // Limit remains at 1000
             return;
         }
-        System.out.println(current);
-        printNumbers(current + 1, limit);
+        System.out.println(k);
+        increment(k + 1); // Call recursively
     }
 }
