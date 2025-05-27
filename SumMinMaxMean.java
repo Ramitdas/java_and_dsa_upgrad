@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class SumMinMaxMean {
 
     // Recursive method to find the sum of the array
@@ -19,7 +21,17 @@ public class SumMinMaxMean {
     }
 
     public static void main(String[] args) {
-        int[] arr = {3, 1, 7, 5, 9, 2};
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of elements in the array: ");
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
         int sum = findSum(arr, 0);
         int min = findMin(arr, 0);
         int max = findMax(arr, 0);
@@ -29,5 +41,7 @@ public class SumMinMaxMean {
         System.out.println("Mean: " + mean);
         System.out.println("Min: " + min);
         System.out.println("Max: " + max);
+
+        scanner.close();
     }
 }
