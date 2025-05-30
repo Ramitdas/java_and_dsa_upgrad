@@ -80,6 +80,41 @@ public class exampleTree {
 
 
     //Deletion
+    Node delete(Node root, int key){
+        if(root == null){
+            return root;
+        }
+        if(key < root.key){
+            root.left = delete(root.left, key);
+        }
+        else if(key > root.key){
+            root.right = delete(root.right, key);
+        }
+        else {
+            //case 2 : if node has 1 child
+            if(root.left == null){
+                return root.right;
+            }
+            else if(root.right == null){
+                return root.left;
+            }
+
+            //case 3 : two children, get inorder successor
+            root.key = minValue(root.right);
+            root.right = delete(root.right,root.key);
+        }
+        return root;
+    }
+
+    int minValue(Node root){
+        int minVal = root.key;
+        while(root.left != null){
+            minVal = root.left.key;
+            root = root.left;
+        }
+        return minVal;
+    }
+
 
 
     public static void main(String[] args) {
