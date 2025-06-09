@@ -8,32 +8,34 @@ public class MergeSortExample2 {
         }
 
         int mid = arr.length / 2;
-        int[] left = Arrays.copyOfRange(arr, 0, mid);
-        int[] right = Arrays.copyOfRange(arr, mid, arr.length);
+        int[] l = Arrays.copyOfRange(arr, 0, mid);
+        int[] r = Arrays.copyOfRange(arr, mid, arr.length);
 
-        mergeSort(left);
-        mergeSort(right);
-        merge(arr, left, right);
+        mergeSort(l);
+        mergeSort(r);
+
+        merge(arr, l, r);
     }
 
     // Merge function to combine two sorted arrays
-    public static void merge(int[] arr, int[] left, int[] right) {
+    public static void merge(int[] arr, int[] l, int[] r) {
+        int n1 = l.length, n2 = r.length; // Initialize inside merge function
         int i = 0, j = 0, k = 0;
 
-        while (i < left.length && j < right.length) {
-            if (left[i] < right[j]) {
-                arr[k++] = left[i++];
+        while (i < n1 && j < n2) {
+            if (l[i] < r[j]) {
+                arr[k++] = l[i++];
             } else {
-                arr[k++] = right[j++];
+                arr[k++] = r[j++];
             }
         }
 
-        while (i < left.length) {
-            arr[k++] = left[i++];
+        while (i < n1) {
+            arr[k++] = l[i++];
         }
 
-        while (j < right.length) {
-            arr[k++] = right[j++];
+        while (j < n2) {
+            arr[k++] = r[j++];
         }
     }
 
