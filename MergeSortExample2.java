@@ -19,10 +19,9 @@ public class MergeSortExample2 {
 
     // Merge function to combine two sorted arrays
     public static void merge(int[] arr, int[] l, int[] r) {
-        int n1 = l.length, n2 = r.length; // Initialize inside merge function
         int i = 0, j = 0, k = 0;
 
-        while (i < n1 && j < n2) {
+        while (i < l.length && j < r.length) {
             if (l[i] < r[j]) {
                 arr[k++] = l[i++];
             } else {
@@ -30,11 +29,11 @@ public class MergeSortExample2 {
             }
         }
 
-        while (i < n1) {
+        while (i < l.length) {
             arr[k++] = l[i++];
         }
 
-        while (j < n2) {
+        while (j < r.length) {
             arr[k++] = r[j++];
         }
     }
