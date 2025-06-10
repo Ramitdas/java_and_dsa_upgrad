@@ -28,31 +28,12 @@ public class mergeSort {
         int k = l;
 
 
-        while(i < n1 && j < n2){
-            if(L[i] <= R[j]){
-                arr[k] = L[i];
-                i++;
-            }
-            else{
-                arr[k] = R[j];
-                j++;
-            }
-            k++;
+        while(i < n1 && j < n2) {
+            arr[k++] = (L[i] <= R[j]) ? L[i++] : R[j++];
         }
-
-        //Copy the remaining elements of L[] if there are any
-        while(i < n1){
-            arr[k] = L[i];
-            i++;
-            k++;
-        }
-
-         //Copy the remaining elements of L[] if there are any
-        while(j < n2){
-            arr[k] = R[j];
-            j++;
-            k++;
-        }
+        // Copy any remaining elements
+        while(i < n1) arr[k++] = L[i++];
+        while(j < n2) arr[k++] = R[j++];
 
     }
 
