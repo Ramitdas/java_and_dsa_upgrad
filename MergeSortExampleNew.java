@@ -1,12 +1,12 @@
 import java.util.Arrays;
 
-public class MergeSortExampleNew {
+public class MergeSortExample {
     public static void mergeSort(int[] arr, int left, int right) {
         if (left >= right) {
             return;
         }
 
-        int mid = (left + right) / 2;
+        int mid = (right + left) / 2;
         mergeSort(arr, left, mid);
         mergeSort(arr, mid + 1, right);
         merge(arr, left, mid, right);
@@ -17,12 +17,9 @@ public class MergeSortExampleNew {
         int[] L = Arrays.copyOfRange(arr, left, mid + 1);
         int[] R = Arrays.copyOfRange(arr, mid + 1, right + 1);
 
-        // Define sizes dynamically
-        int n1 = L.length, n2 = R.length;
-        
         int i = 0, j = 0, k = left;
 
-        while (i < n1 && j < n2) {
+        while (i < L.length && j < R.length) {
             if (L[i] <= R[j]) {
                 arr[k++] = L[i++];
             } else {
@@ -30,11 +27,11 @@ public class MergeSortExampleNew {
             }
         }
 
-        while (i < n1) {
+        while (i < L.length) {
             arr[k++] = L[i++];
         }
 
-        while (j < n2) {
+        while (j < R.length) {
             arr[k++] = R[j++];
         }
     }
